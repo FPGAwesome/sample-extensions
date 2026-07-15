@@ -1,0 +1,12 @@
+{
+  "name": "sample-extensions",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p extensions/program-analysis-ghidra/tsconfig.json",
+    "validate": "node scripts/validate.cjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

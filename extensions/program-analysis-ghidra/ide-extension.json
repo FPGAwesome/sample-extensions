@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "sample.program-analysis",
+  "name": "Program Analysis Lab",
+  "publisher": "Sample Extensions",
+  "version": "1.1.0",
+  "kind": "project",
+  "description": "A defensive reverse-engineering workflow boundary with Ghidra-oriented prompts and tools.",
+  "engines": {
+    "ide": ">=0.1.0"
+  },
+  "repository": {
+    "type": "local",
+    "url": "../.."
+  },
+  "main": "dist/extension.js",
+  "activationEvents": ["onCommand:programAnalysis.describeExtension"],
+  "permissions": ["commands"],
+  "contributes": {
+    "projectWorkflows": ["workflow.json"],
+    "commands": [
+      {
+        "command": "programAnalysis.describeExtension",
+        "title": "Describe Extension",
+        "category": "Program Analysis"
+      }
+    ]
+  }
+}

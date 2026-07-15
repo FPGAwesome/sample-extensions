@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "sample.rust-language",
+  "name": "Rust Language Support",
+  "publisher": "Sample Extensions",
+  "version": "1.0.0",
+  "kind": "language",
+  "description": "Rust file detection, editor configuration, badges, and Monarch syntax highlighting.",
+  "engines": {
+    "ide": ">=0.1.0"
+  },
+  "repository": {
+    "type": "local",
+    "url": "../.."
+  },
+  "contributes": {
+    "languages": ["language.json"]
+  }
+}

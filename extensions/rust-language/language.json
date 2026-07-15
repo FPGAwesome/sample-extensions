@@ -1,0 +1,59 @@
+{
+  "id": "rust",
+  "displayName": "Rust",
+  "extensions": [".rs"],
+  "aliases": ["Rust", "rs"],
+  "badge": "RS",
+  "configuration": {
+    "comments": {
+      "lineComment": "//",
+      "blockComment": ["/*", "*/"]
+    },
+    "brackets": [["{", "}"], ["[", "]"], ["(", ")"]],
+    "autoClosingPairs": [
+      { "open": "{", "close": "}" },
+      { "open": "[", "close": "]" },
+      { "open": "(", "close": ")" },
+      { "open": "\"", "close": "\"", "notIn": ["string"] },
+      { "open": "'", "close": "'", "notIn": ["string", "comment"] }
+    ],
+    "surroundingPairs": [
+      { "open": "{", "close": "}" },
+      { "open": "[", "close": "]" },
+      { "open": "(", "close": ")" },
+      { "open": "\"", "close": "\"" },
+      { "open": "'", "close": "'" }
+    ]
+  },
+  "monarchTokensProvider": {
+    "defaultToken": "",
+    "tokenPostfix": ".rust",
+    "keywords": ["as", "async", "await", "break", "const", "continue", "crate", "dyn", "else", "enum", "extern", "false", "fn", "for", "if", "impl", "in", "let", "loop", "match", "mod", "move", "mut", "pub", "ref", "return", "self", "Self", "static", "struct", "super", "trait", "true", "type", "unsafe", "use", "where", "while"],
+    "typeKeywords": ["bool", "char", "f32", "f64", "i8", "i16", "i32", "i64", "i128", "isize", "str", "u8", "u16", "u32", "u64", "u128", "usize"],
+    "operators": ["=", ">", "<", "!", "~", "?", ":", "==", "<=", ">=", "!=", "&&", "||", "+", "-", "*", "/", "&", "|", "^", "%", "<<", ">>", "+=", "-=", "*=", "/=", "&=", "|=", "^=", "%=", "<<=", ">>=", "=>", "->", "..", "..=", "::"],
+    "tokenizer": {
+      "root": [
+        ["[a-zA-Z_]\\w*!", "keyword"],
+        ["[a-zA-Z_]\\w*", { "cases": { "@typeKeywords": "type", "@keywords": "keyword", "@default": "identifier" } }],
+        ["//.*$", "comment"],
+        ["/\\*", "comment", "@comment"],
+        ["[{}()\\[\\]]", "@brackets"],
+        ["[=><!~?:&|+\\-*\\/\\^%]+", { "cases": { "@operators": "operator", "@default": "" } }],
+        ["\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[eE][\\-+]?\\d[\\d_]*)?", "number"],
+        ["\"", "string", "@string"],
+        ["[;,.]", "delimiter"]
+      ],
+      "comment": [
+        ["[^\\/*]+", "comment"],
+        ["/\\*", "comment", "@push"],
+        ["\\*/", "comment", "@pop"],
+        ["[\\/*]", "comment"]
+      ],
+      "string": [
+        ["[^\\\\\"]+", "string"],
+        ["\\\\.", "string.escape"],
+        ["\"", "string", "@pop"]
+      ]
+    }
+  }
+}

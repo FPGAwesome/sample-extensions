@@ -1,0 +1,37 @@
+{
+  "id": "sample.program-analysis",
+  "ownsWorkflowContext": "analysis",
+  "lifecycle": "external-candidate",
+  "entryFlow": "folder",
+  "backend": {
+    "kind": "local-process",
+    "planned": "User-configured Ghidra headless analyzer with JSON artifact export into the renderer."
+  },
+  "shouldExtractToOwnRepo": true,
+  "notes": [
+    "Keep suspicious artifact handling isolated from the general code workflow.",
+    "Do not bundle Ghidra by default; detect or configure a local installation when backend work begins.",
+    "Move this extension to its own repository once it has scripts, fixtures, backend adapters, or release packaging."
+  ],
+  "workflow": {
+    "id": "analysis",
+    "name": "Program Analysis Lab",
+    "shortName": "Analysis",
+    "description": "Reverse engineering and defensive malware-analysis workflows with artifact triage.",
+    "accent": "#c586c0",
+    "icon": "RE",
+    "focusAreas": ["Binary notes", "Static triage", "Indicators and YARA ideas"],
+    "primaryTools": ["Artifact map", "Ghidra bridge", "String search", "Sandbox command cards"],
+    "starterPrompts": ["Summarize suspicious strings", "Create a triage checklist", "Draft defensive IOCs from these notes"]
+  },
+  "lanes": [
+    { "title": "Intake", "items": ["Collect hashes, filenames, and provenance.", "Mark samples as untrusted.", "Capture initial strings and metadata."] },
+    { "title": "Static Review", "items": ["Map imports and suspicious APIs.", "Track decoded config candidates.", "Draft YARA and IOC notes."] },
+    { "title": "Findings", "items": ["Summarize behavior defensively.", "Separate facts from hypotheses.", "Prepare remediation notes."] }
+  ],
+  "commands": [
+    "Get-ChildItem -Recurse | Select-Object -First 40",
+    "strings sample.bin",
+    "rg -n \"CreateProcess|VirtualAlloc|powershell\" ."
+  ]
+}
