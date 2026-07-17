@@ -3,9 +3,9 @@
   "id": "sample.rust-language",
   "name": "Rust Language Support",
   "publisher": "Sample Extensions",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "kind": "language",
-  "description": "Rust file detection, editor configuration, badges, and Monarch syntax highlighting.",
+  "description": "Rust syntax highlighting and rust-analyzer language intelligence for the work-in-progress IDE.",
   "engines": {
     "ide": ">=0.1.0"
   },
@@ -14,6 +14,8 @@
     "url": "../.."
   },
   "contributes": {
-    "languages": ["language.json"]
-  }
+    "languages": ["language.json"],
+    "languageServers": ["rust-analyzer.json"]
+  },
+  "permissions": ["workspace.read", "process"]
 }

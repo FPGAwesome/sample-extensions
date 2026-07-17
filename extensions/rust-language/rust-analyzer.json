@@ -1,0 +1,22 @@
+{
+  "id": "rust-analyzer",
+  "name": "rust-analyzer",
+  "languages": ["rust"],
+  "command": "rust-analyzer",
+  "args": [],
+  "transport": "stdio",
+  "workspaceRootMarkers": ["Cargo.toml", "rust-project.json"],
+  "initializationOptions": {
+    "check": {
+      "command": "check"
+    },
+    "cargo": {
+      "buildScripts": {
+        "enable": true
+      }
+    },
+    "procMacro": {
+      "enable": true
+    }
+  }
+}
